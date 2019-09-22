@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import cardData from './cards.json'
 
 const CardStyled = styled.section`
   background: white;
@@ -11,7 +10,6 @@ const CardStyled = styled.section`
 
 export default function Card({ title, question, answer }) {
   const [isAnswerVisible, setIsAnswerVisible] = useState(false)
-  const [cards, setCards] = useState([cardData])
 
   function toggleAnswer() {
     setIsAnswerVisible(!isAnswerVisible)
