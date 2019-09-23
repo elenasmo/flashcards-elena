@@ -12,7 +12,9 @@ export default function SettingsPage({ onSubmit }) {
   }
   return (
     <SettingsStyled>
-      <h2>Create a new flashcard</h2>
+      <h2>Settings</h2>
+      <button>Clear Bookmarks</button>
+      <button>Clear Practice</button>
       <form onSubmit={handleSubmit}>
         <label>
           Title
@@ -52,9 +54,12 @@ const SettingsStyled = styled.section`
   padding: 20px;
   overflow-y: scroll;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 50px;
+  grid-template-rows: 100px 50px 50px auto 50px
   grid-gap: 10px;
   align-items: center;
+  form {
+    display: grid;
+  }
   label {
     display: grid;
   }

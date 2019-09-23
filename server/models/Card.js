@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 const Card = mongoose.model('Card', {
   title: String,
   question: String,
-  answer: String
+  answer: String,
+  isBookmarked: Boolean,
+  doPractice: Boolean
 })
 
 module.exports = Card
