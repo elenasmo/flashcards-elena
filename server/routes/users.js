@@ -1,21 +1,21 @@
-const uid = require('uid')
+//const uid = require('uid')
 const router = require('express').Router()
 const saveFile = require('../saveFile')
 
 const User = require('../models/Users')
 
-function saveUsers(data) {
-  return saveFile('users.json', data)
-}
+// function saveUsers(data) {
+//   return saveFile('users.json', data)
+// }
 
-let users
-try {
-  users = require('../data/users.json').map(user => {
-    return { id: uid(), ...user }
-  })
-} catch {
-  users = []
-}
+// let users
+// try {
+//   users = require('../data/users.json').map(user => {
+//     return { id: uid(), ...user }
+//   })
+// } catch {
+//   users = []
+// }
 
 router.get('/', (req, res) => {
   User.find()

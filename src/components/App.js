@@ -1,24 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navigation from './Navigation'
-import HomePage from './HomePage'
+import CardList from './CardList'
 import GlobalStyle from './GlobalStyle'
 import styled from 'styled-components/macro'
 import SettingsPage from './SettingsPage'
-import cardData from './cards.json'
+//import cardData from './cards.json'
+import { getAllCards, postCard } from '../services'
 
 export default function App() {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [cards, setCards] = useState(cardData)
+
+  useEffect(() => {
+    getAllCards().then(setCards)
+  }, []) //leeres Array, damit es nur einmal beim Start aufgerufen wird
+
+  const [cards, setCards] = useState([])
 
   function createCard(cardData) {
     console.log(cardData)
+    postCard(cardData).then(card => setCards([...cards, card]))
+    //setCards([...cards, cardData])
   }
 
   function renderPage() {
     const pages = {
-      0: <HomePage cards={cards} />,
-      1: <section>Practice</section>,
-      2: <section>Bookmarks</section>,
+      0: <CardList title="Home" cards={cards} />,
+      1: (
+        <CardList
+          title="Practice"
+          cards={cards.filter(card => card.doPractice)}
+        />
+      ),
+      2: (
+        <CardList
+          title="Bookmarks"
+          cards={cards.filter(card => card.isBookmarked)}
+        />
+      ),
       3: <SettingsPage onSubmit={createCard} />
     }
 
