@@ -1,23 +1,37 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import { NavLink } from 'react-router-dom'
 
-export default function Navigation({ buttonTexts, onClick }) {
+export default function Navigation() {
   return (
     <NavigationStyled className="Navigation">
-      {buttonTexts.map((text, index) => (
-        <button onClick={() => onClick(index)} key={index}>
-          {text}
-        </button>
-      ))}
+      <LinkStyled exact to="/">
+        Home
+      </LinkStyled>
+      <LinkStyled to="/Practice">Practice</LinkStyled>
+      <LinkStyled to="/Bookmark">Bookmark</LinkStyled>
+      <LinkStyled to="/Settings">Settings</LinkStyled>
     </NavigationStyled>
   )
 }
 
 const NavigationStyled = styled.nav`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1px;
+`
+
+const LinkStyled = styled(NavLink)`
+  font-size: 2em;
+  flex-grow: 1;
+  color: inherit;
+  text-decoration: none;
   display: flex;
-  button {
-    background-color: skyblue;
-    font-size: 1.2em;
-    flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  background: lightgray;
+
+  &.active {
+    background: darkred;
   }
 `

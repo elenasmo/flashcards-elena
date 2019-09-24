@@ -13,6 +13,10 @@ export default function Card({
   function toggleAnswer() {
     setIsAnswerVisible(!isAnswerVisible)
   }
+  function handleBookmarkClick(event) {
+    event.stopPropagation()
+    onBookmarkClick()
+  }
 
   return (
     <CardStyled onClick={toggleAnswer} className="Card">
@@ -21,7 +25,7 @@ export default function Card({
       {isAnswerVisible && <Answer text={answer} />}
       <BookmarkStyled
         active={isBookmarked}
-        onClick={onBookmarkClick}
+        onClick={handleBookmarkClick}
       ></BookmarkStyled>
     </CardStyled>
   )
@@ -46,9 +50,10 @@ const CardStyled = styled.section`
 const BookmarkStyled = styled.div`
   position: absolute;
   right: 10px;
-  top: -15px;
+  top: -10px;
   width: 30px;
   height: 10px;
+  background: ${({ active }) => (active ? 'darkred' : 'black')};
 
   &:after {
     position: absolute;

@@ -4,12 +4,11 @@ import CardList from './CardList'
 import GlobalStyle from './GlobalStyle'
 import styled from 'styled-components/macro'
 import SettingsPage from './SettingsPage'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { getAllCards, postCard, patchCard } from '../services'
 
 export default function App() {
-  const [activeIndex, setActiveIndex] = useState(0)
-
   useEffect(() => {
     getAllCards().then(setCards)
   }, []) //leeres Array, damit es nur einmal beim Start aufgerufen wird
@@ -36,7 +35,7 @@ export default function App() {
     )
   }
 
-  function renderPage() {
+  function renderPage(index) {
     const pages = {
       0: (
         <CardList
@@ -62,18 +61,20 @@ export default function App() {
       3: <SettingsPage onSubmit={createCard} />
     }
 
-    return pages[activeIndex] || <section>404</section>
+    return pages[index] || <section>404</section>
   }
 
   return (
-    <AppStyled>
-      <GlobalStyle />
-      {renderPage()}
-      <Navigation
-        buttonTexts={['Home', 'Practice', 'Bookmarks', 'Settings']}
-        onClick={setActiveIndex}
-      />
-    </AppStyled>
+    <Router>
+      <AppStyled>
+        <GlobalStyle />
+        <Route exact path="/" render={() => renderPage(0)} />
+        <Route path="/practice" render={() => renderPage(1)} />
+        <Route path="/bookmark" render={() => renderPage(2)} />
+        <Route path="/settings" render={() => renderPage(3)} />
+        <Navigation />
+      </AppStyled>
+    </Router>
   )
 }
 
