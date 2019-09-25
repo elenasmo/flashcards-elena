@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navigation from './Navigation'
-import CardList from './CardList'
+import CardListPage from './CardListPage'
 import GlobalStyle from './GlobalStyle'
 import styled from 'styled-components/macro'
 import SettingsPage from './SettingsPage'
@@ -38,21 +38,21 @@ export default function App() {
   function renderPage(index) {
     const pages = {
       0: (
-        <CardList
+        <CardListPage
           onBookmarkClick={handleBookmarkClick}
           title="Home"
           cards={cards}
         />
       ),
       1: (
-        <CardList
+        <CardListPage
           onBookmarkClick={handleBookmarkClick}
           title="Practice"
           cards={cards.filter(card => card.doPractice)}
         />
       ),
       2: (
-        <CardList
+        <CardListPage
           onBookmarkClick={handleBookmarkClick}
           title="Bookmarks"
           cards={cards.filter(card => card.isBookmarked)}
@@ -82,5 +82,9 @@ const AppStyled = styled.div`
   display: grid;
   grid-template-rows: auto 50px;
   margin: 20px;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `

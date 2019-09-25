@@ -53,12 +53,12 @@ const BookmarkStyled = styled.div`
   top: -10px;
   width: 30px;
   height: 10px;
-  background: ${({ active }) => (active ? 'darkred' : 'black')};
+  background: ${({ active }) => (active ? 'rgb(212, 55, 84)' : 'grey')};
 
   &:after {
     position: absolute;
     content: '';
-    border: 15px solid ${({ active }) => (active ? 'darkred' : 'black')};
+    border: 15px solid ${({ active }) => (active ? 'rgb(212, 55, 84)' : 'grey')};
     top: 100%;
     left: 0;
     right: 0;

@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 import styled from 'styled-components/macro'
 
-export default function CardList({ cards, title, onBookmarkClick }) {
+export default function CardListPage({ cards, title, onBookmarkClick }) {
   return (
     <StyledHomePage className="page">
       <h1>{title}</h1>

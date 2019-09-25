@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
 body {
     background-color: #eee;
     margin: 0;
-    overflow: hidden;
+   
 }
 `
 export default GlobalStyle

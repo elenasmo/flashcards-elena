@@ -22,16 +22,16 @@ const NavigationStyled = styled.nav`
 `
 
 const LinkStyled = styled(NavLink)`
-  font-size: 2em;
+  font-size: 1.2em;
   flex-grow: 1;
   color: inherit;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: lightgray;
+  background: gray;
 
   &.active {
-    background: darkred;
+    background: rgb(212, 55, 84);
   }
 `
