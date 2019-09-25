@@ -1,9 +1,10 @@
 import React from 'react'
 import Card from './Card'
+import { withKnobs, boolean, text } from '@storybook/addon-knobs'
 
 export default {
   title: 'Card',
-  decorators: [Wrapper]
+  decorators: [withKnobs, Wrapper]
 }
 
 function Wrapper(storyFn) {
@@ -15,5 +16,9 @@ export const notBookmarked = () => (
 )
 
 export const isBookmarked = () => (
-  <Card title="Title" question="Question" isBookmarked={true} />
+  <Card
+    title="Title"
+    question="Question"
+    isBookmarked={boolean('isBookmarked', true)}
+  />
 )

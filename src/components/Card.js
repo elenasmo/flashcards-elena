@@ -1,5 +1,18 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
+  isBookmarked: PropTypes.bool,
+  onBookmarkClick: PropTypes.func
+}
+
+Card.defaultProps = {
+  title: '(No title)'
+}
 
 export default function Card({
   title,
