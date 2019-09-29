@@ -1,10 +1,11 @@
 import React from 'react'
 import Card from './Card'
 import { withKnobs, boolean, text } from '@storybook/addon-knobs'
+import { withInfo } from '@storybook/addon-info'
 
 export default {
   title: 'Card',
-  decorators: [withKnobs, Wrapper]
+  decorators: [withInfo, withKnobs, Wrapper]
 }
 
 function Wrapper(storyFn) {
